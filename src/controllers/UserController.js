@@ -7,13 +7,15 @@ import {
   deleteByid,
 } from "../models/UserModel.js";
 
+import returnOfErrors from "../errors.js";
+
 export async function Create(req, res) {
   try {
     const user = await createUser(req.body);
 
     res.status(200).send(user);
   } catch (error) {
-    res.status(500).send(error);
+    res.status(500).send(returnOfErrors(error.code));
   }
 }
 
@@ -49,7 +51,7 @@ export async function modifyLastnameAndAddress(req, res) {
 
     res.status(200).send(user);
   } catch (error) {
-    res.status(500).send(error);
+    res.status(500).send(returnOfErrors(error.code));
   }
 }
 
@@ -59,7 +61,7 @@ export async function modifyNickname(req, res) {
 
     res.status(200).send(user);
   } catch (error) {
-    res.status(500).send(error);
+    res.status(500).send(returnOfErrors(error.code));
   }
 }
 
