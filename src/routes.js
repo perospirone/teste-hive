@@ -11,6 +11,10 @@ import {
 
 const routes = express.Router();
 
+routes.get("/", (req, res) => {
+  res.status(200).send("funcionando...")
+})
+
 routes.post("/users/create", createUser);
 routes.get("/users/read", listByName);
 routes.get("/users/read/:nickname", listByNickname);
